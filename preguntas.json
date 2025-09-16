@@ -1,0 +1,32 @@
+[
+    {
+        "question": "¿Cuál de estos animales acepto ser amigo del osito?",
+        "options": {
+            "A": "Gato\n",
+            "B": "Perro \n",
+            "C": "ajarito"
+        },
+        "answer": "B",
+        "image": "C:/Users/jorge/Respeto/gato.jpg"
+    },
+    {
+        "question": "¿Que parte del cuerpo le faltaba al osito que no tenía amigos?",
+        "options": {
+            "A": "ojo",
+            "B": "pie",
+            "C": "mano"
+        },
+        "answer": "C",
+        "image": ""
+    },
+    {
+        "question": "¿De que color era el osito?",
+        "options": {
+            "A": "Blanco con negro \n",
+            "B": "Negro \n",
+            "C": "Café"
+        },
+        "answer": "A",
+        "image": "C:/Users/jorge/Respeto/osos.jpg"
+    }
+]

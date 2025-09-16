@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz Principal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #a9a9a9;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #a9a9a9;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .menu-btn {
+            padding: 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        
+        .menu-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #a9a9a9;
+            margin-bottom: 20px;
+        }
+        
+        .sub-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .btn {
+            padding: 12px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+        }
+        
+        .btn-secondary {
+            background-color: #f44336;
+        }
+        
+        .btn-warning {
+            background-color: #ff9800;
+        }
+        
+        .btn-info {
+            background-color: #2196F3;
+        }
+        
+        textarea,
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 8px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: black;
+        }
+        
+        .question-container {
+            margin: 15px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .options-container {
+            margin: 15px 0;
+        }
+        
+        .option {
+            margin: 8px 0;
+        }
+        
+        .collage-container {
+            position: relative;
+            width: 700px;
+            height: 500px;
+            margin: 0 auto;
+            background-color: white;
+        }
+        
+        .heart-base {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            top: 60px;
+            left: 200px;
+        }
+        
+        .heart-left {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            background-color: #ff6b81;
+            border-radius: 50%;
+            top: 60px;
+            left: 170px;
+        }
+        
+        .heart-right {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            background-color: #ff6b81;
+            border-radius: 50%;
+            top: 60px;
+            left: 330px;
+        }
+        
+        .heart-bottom {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            background-color: #ff6b81;
+            transform: rotate(45deg);
+            top: 180px;
+            left: 210px;
+        }
+        
+        .collage-item {
+            position: absolute;
+            width: 120px;
+            height: 90px;
+            object-fit: cover;
+            border: 2px solid white;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: fall linear forwards;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        
+        .music-player {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        .music-btn {
+            width: 250px;
+            height: 60px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        
+        .registros-list {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 15px 0;
+        }
+        
+        .registro-item {
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .x-mark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 120px;
+            color: darkred;
+            z-index: 100;
+        }
+        
+        .x-line {
+            position: absolute;
+            height: 20px;
+            background-color: red;
+            border-radius: 10px;
+            z-index: 99;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Menú Principal -->
+    <div id="main-menu">
+        <div class="top-bar">
+            <div class="sub-header">Registro</div>
+            <button class="btn btn-info" onclick="showRegistros()">Ver registros</button>
+        </div>
+
+        <div class="header">
+            <h1>Menú Principal</h1>
+        </div>
+
+        <div class="menu-grid">
+            <button class="menu-btn" style="background-color: green; color: white;" onclick="showPreguntasMenu()">1. Preguntas</button>
+            <button class="menu-btn" style="background-color: yellow; color: black;" onclick="showMusica()">2. Música</button>
+            <button class="menu-btn" style="background-color: red; color: white;" onclick="showRespeto()">3. Respeto</button>
+            <button class="menu-btn" style="background-color: purple; color: white;" onclick="showCorazon()">4. Corazón ♥️</button>
+        </div>
+    </div>
+
+    <!-- Modal para diálogos -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <script>
+        // Almacenamiento de datos
+        const ALFABETO_KEY = 'alfabeto';
+        const SIMON_KEY = 'simon_dice';
+        const PREGUNTAS_KEY = 'preguntas';
+        const RESPETO_KEY = 'respuestas_respeto';
+        const REGISTROS_KEY = 'registros';
+
+        // Datos de la aplicación
+        let alfabeto = {};
+        let simonFrases = [];
+        let preguntas = [];
+        let respuestasRespeto = [];
+        let registros = [];
+
+        // Estado de la aplicación
+        let currentTrack = null;
+        let trackPaused = false;
+        let collageItems = [];
+        let audioPlayers = {};
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            loadData();
+            showMainMenu();
+        });
+
+        // Cargar datos desde localStorage
+        function loadData() {
+            alfabeto = JSON.parse(localStorage.getItem(ALFABETO_KEY)) ||
+                Object.fromEntries(Array.from({
+                    length: 26
+                }, (_, i) => [String.fromCharCode(65 + i), '']));
+
+            simonFrases = JSON.parse(localStorage.getItem(SIMON_KEY)) || [
+                "Simón dice todos sentados",
+                "Simón dice todos de pie",
+                "Simón dice todos consigan un plumón",
+                "Simón dice levanten la mano derecha",
+                "Simón dice toquen su cabeza",
+            ];
+
+            preguntas = JSON.parse(localStorage.getItem(PREGUNTAS_KEY)) || [];
+            respuestasRespeto = JSON.parse(localStorage.getItem(RESPETO_KEY)) || [];
+            registros = JSON.parse(localStorage.getItem(REGISTROS_KEY)) || [];
+        }
+
+        // Guardar datos en localStorage
+        function saveData(key, data) {
+            localStorage.setItem(key, JSON.stringify(data));
+        }
+
+        // Añadir registro
+        function addRegistro(tipo, detalle) {
+            const entry = {
+                tipo: tipo,
+                detalle: detalle,
+                timestamp: new Date().toISOString()
+            };
+            registros.push(entry);
+            saveData(REGISTROS_KEY, registros);
+        }
+
+        // Navegación entre pantallas
+        function showMainMenu() {
+            hideAllSections();
+            document.getElementById('main-menu').style.display = 'block';
+        }
+
+        function hideAllSections() {
+            const sections = document.querySelectorAll('body > div');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+        }
+
+        function showModal(content) {
+            document.getElementById('modal-content').innerHTML = content;
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        // Preguntas
+        function showPreguntasMenu() {
+            hideAllSections();
+
+            const content = `
+                <div>
+                    <div class="top-bar">
+                        <button class="btn" onclick="abrirDialogoAgregarPregunta()">Agregar pregunta</button>
+                        <button class="btn btn-info" onclick="guardarPreguntas()">Guardar preguntas</button>
+                        <button class="btn btn-secondary" onclick="showMainMenu()">Volver al menú</button>
+                    </div>
+                    
+                    <div class="header">
+                        <h2>Preguntas al azar</h2>
+                    </div>
+                    
+                    <div style="text-align: center; margin: 20px;">
+                        <button class="btn" onclick="jugarTodasPreguntas()">Jugar todas las preguntas</button>
+                    </div>
+                </div>
+            `;
+
+            const section = document.createElement('div');
+            section.innerHTML = content;
+            document.body.appendChild(section);
+        }
+
+        function abrirDialogoAgregarPregunta() {
+            const content = `
+                <h2>Agregar pregunta</h2>
+                <div>
+                    <label>Pregunta:</label>
+                    <textarea id="pregunta-text" rows="4"></textarea>
+                    
+                    <label>Opción A:</label>
+                    <input type="text" id="opt-a">
+                    
+                    <label>Opción B:</label>
+                    <input type="text" id="opt-b">
+                    
+                    <label>Opción C:</label>
+                    <input type="text" id="opt-c">
+                    
+                    <label>Respuesta correcta (A/B/C):</label>
+                    <input type="text" id="correct-answer">
+                    
+                    <label>Imagen (URL opcional):</label>
+                    <input type="text" id="pregunta-image">
+                    
+                    <div style="margin-top: 20px;">
+                        <button class="btn" onclick="guardarPregunta()">Guardar</button>
+                        <button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
+                    </div>
+                </div>
+            `;
+
+            showModal(content);
+        }
+
+        function guardarPregunta() {
+            const pregunta = document.getElementById('pregunta-text').value;
+            const optA = document.getElementById('opt-a').value;
+            const optB = document.getElementById('opt-b').value;
+            const optC = document.getElementById('opt-c').value;
+            const answer = document.getElementById('correct-answer').value.toUpperCase();
+            const image = document.getElementById('pregunta-image').value;
+
+            if (!pregunta || !answer.match(/^[ABC]$/)) {
+                alert('Completa la pregunta y especifica una respuesta válida (A, B o C)');
+                return;
+            }
+
+            const entry = {
+                question: pregunta,
+                options: {
+                    A: optA,
+                    B: optB,
+                    C: optC
+                },
+                answer: answer
+            };
+
+            if (image) {
+                entry.image = image;
+            }
+
+            preguntas.push(entry);
+            saveData(PREGUNTAS_KEY, preguntas);
+            addRegistro('pregunta_agregada', `Pregunta agregada: ${pregunta.substring(0, 50)}`);
+            closeModal();
+            alert('Pregunta guardada correctamente');
+        }
+
+        function guardarPreguntas() {
+            saveData(PREGUNTAS_KEY, preguntas);
+            alert('Preguntas guardadas');
+        }
+
+        function jugarTodasPreguntas() {
+            if (preguntas.length === 0) {
+                alert('No hay preguntas para jugar');
+                return;
+            }
+
+            const shuffled = [...preguntas].sort(() => Math.random() - 0.5);
+            mostrarPregunta(shuffled, 0);
+        }
+
+        function mostrarPregunta(lista, idx) {
+            if (idx >= lista.length) {
+                alert('¡Has terminado todas las preguntas!');
+                showPreguntasMenu();
+                return;
+            }
+
+            const q = lista[idx];
+            let content = `
+                <h2>Pregunta</h2>
+                <div class="question-container">
+                    <p>${q.question}</p>
+            `;
+
+            if (q.image) {
+                content += `<img src="${q.image}" style="max-width: 100%; max-height: 250px; margin: 10px 0;">`;
+            }
+
+            content += `
+                </div>
+                <div class="options-container">
+                    <div class="option">
+                        <input type="radio" name="answer" id="opt-a" value="A">
+                        <label for="opt-a">A. ${q.options.A}</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="answer" id="opt-b" value="B">
+                        <label for="opt-b">B. ${q.options.B}</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="answer" id="opt-c" value="C">
+                        <label for="opt-c">C. ${q.options.C}</label>
+                    </div>
+                </div>
+                <button class="btn" onclick="verificarRespuesta('${q.answer}', ${idx}, ${JSON.stringify(lista).replace(/"/g, '&quot;')})">Verificar</button>
+            `;
+
+            showModal(content);
+        }
+
+        function verificarRespuesta(respuestaCorrecta, idx, lista) {
+            const selected = document.querySelector('input[name="answer"]:checked');
+            if (!selected) {
+                alert('Selecciona una respuesta');
+                return;
+            }
+
+            if (selected.value === respuestaCorrecta) {
+                addRegistro('pregunta_resuelta', `Correcta: ${lista[idx].question.substring(0, 50)}`);
+                animarConfeti(function() {
+                    closeModal();
+                    mostrarPregunta(lista, idx + 1);
+                });
+            } else {
+                addRegistro('pregunta_resuelta', `Incorrecta: ${lista[idx].question.substring(0, 50)} (elegido ${selected.value})`);
+                closeModal();
+                mostrarPregunta(lista, idx + 1);
+            }
+        }
+
+        // Música
+        function showMusica() {
+            hideAllSections();
+
+            const content = `
+                <div>
+                    <div class="header">
+                        <h2>Reproductor sencillo</h2>
+                    </div>
+                    
+                    <div class="music-player">
+                        <button class="music-btn" onclick="toggleMusic('1.mp3')">1.mp3</button>
+                        <button class="music-btn" onclick="toggleMusic('2.mp3')">2.mp3</button>
+                        <button class="music-btn" onclick="toggleMusic('3.mp3')">3.mp3</button>
+                    </div>
+                    
+                    <div style="text-align: center; margin: 20px;">
+                        <button class="btn btn-secondary" onclick="stopAudio(); showMainMenu();">Regresar</button>
+                    </div>
+                </div>
+            `;
+
+            const section = document.createElement('div');
+            section.innerHTML = content;
+            document.body.appendChild(section);
+        }
+
+        function toggleMusic(track) {
+            if (currentTrack === track) {
+                if (!trackPaused) {
+                    if (audioPlayers[track]) {
+                        audioPlayers[track].pause();
+                        trackPaused = true;
+                    }
+                } else {
+                    if (audioPlayers[track]) {
+                        audioPlayers[track].play();
+                        trackPaused = false;
+                    }
+                }
+                return;
+            }
+
+            stopAudio();
+
+            if (!audioPlayers[track]) {
+                audioPlayers[track] = new Audio(track);
+                audioPlayers[track].addEventListener('error', function() {
+                    alert(`No se pudo cargar el archivo: ${track}`);
+                });
+            }
+
+            audioPlayers[track].play();
+            currentTrack = track;
+            trackPaused = false;
+            addRegistro('musica', `Reprodujo: ${track}`);
+        }
+
+        function stopAudio() {
+            for (const track in audioPlayers) {
+                audioPlayers[track].pause();
+                audioPlayers[track].currentTime = 0;
+            }
+            currentTrack = null;
+            trackPaused = false;
+        }
+
+        // Respeto
+        function showRespeto() {
+            hideAllSections();
+
+            const content = `
+                <div>
+                    <div class="top-bar">
+                        <button class="btn btn-info" onclick="verRespuestasRespeto()">Ver respuestas</button>
+                        <button class="btn btn-secondary" onclick="showMainMenu()">Volver al menú</button>
+                    </div>
+                    
+                    <div class="header">
+                        <h2>Mamita/Papito ¿Qué es el respeto para ti?</h2>
+                    </div>
+                    
+                    <div style="max-width: 800px; margin: 0 auto;">
+                        <textarea id="respeto-text" rows="10"></textarea>
+                        <button class="btn" onclick="guardarRespeto()">Guardar</button>
+                    </div>
+                </div>
+            `;
+
+            const section = document.createElement('div');
+            section.innerHTML = content;
+            document.body.appendChild(section);
+        }
+
+        function guardarRespeto() {
+            const texto = document.getElementById('respeto-text').value.trim();
+            if (!texto) {
+                alert('Escribe algo');
+                return;
+            }
+
+            const entry = {
+                respuesta: texto,
+                timestamp: new Date().toISOString()
+            };
+
+            respuestasRespeto.push(entry);
+            saveData(RESPETO_KEY, respuestasRespeto);
+            addRegistro('respeto', `Respuesta guardada: ${texto.substring(0, 50)}`);
+            document.getElementById('respeto-text').value = '';
+            alert('Respuesta guardada');
+        }
+
+        function verRespuestasRespeto() {
+            let content = '<h2>Respuestas sobre respeto</h2><div class="registros-list">';
+
+            if (respuestasRespeto.length === 0) {
+                content += '<p>No hay respuestas guardadas</p>';
+            } else {
+                respuestasRespeto.forEach(respuesta => {
+                    const fecha = new Date(respuesta.timestamp).toLocaleString();
+                    content += `
+                        <div class="registro-item">
+                            <strong>[${fecha}]</strong> ${respuesta.respuesta}
+                        </div>
+                    `;
+                });
+            }
+
+            content += '</div><button class="btn" onclick="closeModal()">Cerrar</button>';
+            showModal(content);
+        }
+
+        // Corazón / Collage
+        function showCorazon() {
+            hideAllSections();
+            collageItems = [];
+
+            const content = `
+                <div>
+                    <div class="header">
+                        <h2>¿Quiénes merecen respeto?</h2>
+                    </div>
+                    
+                    <div class="collage-container" id="collage-container">
+                        <div class="heart-left"></div>
+                        <div class="heart-right"></div>
+                        <div class="heart-bottom"></div>
+                        <div style="position: absolute; top: 30px; right: 40px; font-size: 28px;">♥️</div>
+                    </div>
+                    
+                    <div style="text-align: center; margin: 20px;">
+                        <button class="btn" onclick="agregarCategoria('persona')">Persona</button>
+                        <button class="btn" onclick="agregarCategoria('animal')">Animal</button>
+                        <button class="btn" onclick="agregarCategoria('flores')">Flores</button>
+                        <button class="btn btn-warning" onclick="agregarCategoria('balon')">Balón</button>
+                        <button class="btn btn-warning" onclick="agregarCategoria('objeto')">Objeto</button>
+                        <button class="btn btn-warning" onclick="agregarCategoria('consola')">Consola</button>
+                    </div>
+                    
+                    <div style="text-align: center; margin: 20px;">
+                        <button class="btn" onclick="guardarCollage()">Guardar collage</button>
+                        <button class="btn btn-warning" onclick="limpiarCollage()">Limpiar collage</button>
+                        <button class="btn btn-secondary" onclick="showMainMenu()">Regresar</button>
+                    </div>
+                </div>
+            `;
+
+            const section = document.createElement('div');
+            section.innerHTML = content;
+            document.body.appendChild(section);
+        }
+
+        const mapping = {
+            'persona': 'https://placehold.co/300x240/ff6b81/white?text=Personas',
+            'animal': 'https://placehold.co/300x240/ff6b81/white?text=Animales',
+            'flores': 'https://placehold.co/300x240/ff6b81/white?text=Flores'
+        };
+
+        const extras = {
+            'balon': 'https://placehold.co/300x240/cccccc/white?text=Balón',
+            'objeto': 'https://placehold.co/300x240/cccccc/white?text=Objeto',
+            'consola': 'https://placehold.co/300x240/cccccc/white?text=Consola'
+        };
+
+        function agregarCategoria(cat) {
+            const container = document.getElementById('collage-container');
+
+            if (mapping[cat]) {
+                const img = document.createElement('img');
+                img.src = mapping[cat];
+                img.className = 'collage-item';
+
+                // Posicionar la imagen en el corazón
+                const positions = [{
+                    left: '200px',
+                    top: '120px'
+                }, {
+                    left: '330px',
+                    top: '120px'
+                }, {
+                    left: '265px',
+                    top: '200px'
+                }, {
+                    left: '200px',
+                    top: '250px'
+                }, {
+                    left: '330px',
+                    top: '250px'
+                }, {
+                    left: '265px',
+                    top: '320px'
+                }];
+
+                const pos = positions[collageItems.length % positions.length];
+                img.style.left = pos.left;
+                img.style.top = pos.top;
+
+                container.appendChild(img);
+                collageItems.push({
+                    tipo: cat,
+                    path: mapping[cat]
+                });
+
+                addRegistro('collage_add', `Agregó ${cat} (${mapping[cat]})`);
+                animarConfeti();
+            } else if (extras[cat]) {
+                mostrarTache();
+                addRegistro('collage_add_incorrecto', `Intentó agregar incorrecto: ${cat}`);
+            } else {
+                alert(`La categoría '${cat}' no está definida`);
+            }
+        }
+
+        function mostrarTache() {
+            const container = document.getElementById('collage-container');
+
+            const xMark = document.createElement('div');
+            xMark.className = 'x-mark';
+            xMark.innerHTML = '✖';
+
+            const line1 = document.createElement('div');
+            line1.className = 'x-line';
+            line1.style.width = '400px';
+            line1.style.top = 'calc(50% - 10px)';
+            line1.style.left = 'calc(50% - 200px)';
+            line1.style.transform = 'rotate(45deg)';
+
+            const line2 = document.createElement('div');
+            line2.className = 'x-line';
+            line2.style.width = '400px';
+            line2.style.top = 'calc(50% - 10px)';
+            line2.style.left = 'calc(50% - 200px)';
+            line2.style.transform = 'rotate(-45deg)';
+
+            container.appendChild(xMark);
+            container.appendChild(line1);
+            container.appendChild(line2);
+
+            setTimeout(() => {
+                if (xMark.parentNode) container.removeChild(xMark);
+                if (line1.parentNode) container.removeChild(line1);
+                if (line2.parentNode) container.removeChild(line2);
+            }, 1500);
+        }
+
+        function limpiarCollage() {
+            const container = document.getElementById('collage-container');
+            const items = container.querySelectorAll('.collage-item');
+            items.forEach(item => container.removeChild(item));
+            collageItems = [];
+            addRegistro('collage', 'Limpiado');
+        }
+
+        function guardarCollage() {
+            if (collageItems.length === 0) {
+                alert('No hay elementos para guardar');
+                return;
+            }
+
+            // En una implementación real, aquí se usaría una librería como html2canvas
+            // para capturar el contenido del collage y guardarlo como imagen
+            alert('Funcionalidad de guardar collage simulada. En una implementación real, se guardaría una imagen.');
+            addRegistro('collage_guardado', 'Guardó collage (simulado)');
+        }
+
+        // Registros
+        function showRegistros() {
+            let content = '<h2>Registros de actividad</h2><div class="registros-list">';
+
+            if (registros.length === 0) {
+                content += '<p>No hay registros</p>';
+            } else {
+                registros.forEach(registro => {
+                    const fecha = new Date(registro.timestamp).toLocaleString();
+                    content += `
+                        <div class="registro-item">
+                            <strong>[${fecha}] ${registro.tipo}:</strong> ${registro.detalle}
+                        </div>
+                    `;
+                });
+            }
+
+            content += '</div>';
+            content += '<button class="btn" onclick="exportRegistros()">Exportar a TXT</button>';
+            content += '<button class="btn btn-secondary" onclick="closeModal()">Cerrar</button>';
+
+            showModal(content);
+        }
+
+        function exportRegistros() {
+            let content = '';
+            registros.forEach(registro => {
+                content += `[${registro.timestamp}] ${registro.tipo}: ${registro.detalle}\n`;
+            });
+
+            const blob = new Blob([content], {
+                type: 'text/plain'
+            });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'registros.txt';
+            a.click();
+
+            addRegistro('registros_export', 'Exportó registros a: registros.txt');
+            alert('Registros exportados');
+        }
+
+        // Animación de confeti
+        function animarConfeti(onComplete) {
+            const colors = ["#ff4b5c", "#4bcffa", "#ffd166", "#06d6a0", "#8338ec", "#ff8fab", "#f94144", "#f9844a"];
+            const container = document.querySelector('body');
+
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = (Math.random() * 6 + 6) + 'px';
+                confetti.style.height = confetti.style.width;
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+
+                container.appendChild(confetti);
+
+                setTimeout(() => {
+                    if (confetti.parentNode) container.removeChild(confetti);
+                }, 5000);
+            }
+
+            if (onComplete) {
+                setTimeout(onComplete, 3000);
+            }
+        }
+    </script>
+</body>
+
+</html>

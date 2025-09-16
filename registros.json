@@ -1,0 +1,277 @@
+[
+    {
+        "tipo": "musica",
+        "detalle": "Reprodujo: 1.mp3",
+        "timestamp": "2025-09-14T19:19:30.910593"
+    },
+    {
+        "tipo": "musica",
+        "detalle": "Reprodujo: 2.mp3",
+        "timestamp": "2025-09-14T19:19:33.089627"
+    },
+    {
+        "tipo": "musica",
+        "detalle": "Reprodujo: 3.mp3",
+        "timestamp": "2025-09-14T19:19:37.536705"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó persona (personas.jpg)",
+        "timestamp": "2025-09-14T19:19:48.186443"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó animal (animales.jpg)",
+        "timestamp": "2025-09-14T19:19:49.389955"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó flores (flores.jpg)",
+        "timestamp": "2025-09-14T19:19:51.274121"
+    },
+    {
+        "tipo": "collage",
+        "detalle": "Limpiado",
+        "timestamp": "2025-09-14T19:20:03.415992"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó persona (personas.jpg)",
+        "timestamp": "2025-09-14T19:20:13.221149"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó animal (animales.jpg)",
+        "timestamp": "2025-09-14T19:20:14.268092"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó flores (flores.jpg)",
+        "timestamp": "2025-09-14T19:20:15.588066"
+    },
+    {
+        "evento": "Preguntas eliminadas",
+        "fecha": "2025-09-14 19:28:03"
+    },
+    {
+        "evento": "Pregunta agregada: ¿Cuál de estos animales acepto ser amigo del osito?",
+        "fecha": "2025-09-14 19:29:29"
+    },
+    {
+        "evento": "Pregunta agregada: ¿Que parte del cuerpo le faltaba al osito que no tenía amigos?",
+        "fecha": "2025-09-14 19:30:33"
+    },
+    {
+        "evento": "Pregunta agregada: ¿De que color era el osito?",
+        "fecha": "2025-09-14 19:31:37"
+    },
+    {
+        "evento": "Pregunta respondida: ¿Cuál de estos animales acepto ser amigo del osito?, Seleccionada: B",
+        "fecha": "2025-09-14 19:32:00"
+    },
+    {
+        "evento": "Pregunta respondida: ¿Que parte del cuerpo le faltaba al osito que no tenía amigos?, Seleccionada: C",
+        "fecha": "2025-09-14 19:32:13"
+    },
+    {
+        "evento": "Reproduciendo: 1.mp3",
+        "fecha": "2025-09-14 19:32:24"
+    },
+    {
+        "evento": "Reproduciendo: 2.mp3",
+        "fecha": "2025-09-14 19:32:25"
+    },
+    {
+        "evento": "Reproduciendo: 3.mp3",
+        "fecha": "2025-09-14 19:32:27"
+    },
+    {
+        "evento": "Imagen agregada al collage: animal",
+        "fecha": "2025-09-14 19:32:34"
+    },
+    {
+        "evento": "Imagen agregada al collage: persona",
+        "fecha": "2025-09-14 19:32:35"
+    },
+    {
+        "evento": "Imagen agregada al collage: flores",
+        "fecha": "2025-09-14 19:32:36"
+    },
+    {
+        "evento": "Imagen agregada al collage: animal",
+        "fecha": "2025-09-15 16:01:59"
+    },
+    {
+        "evento": "Imagen agregada al collage: persona",
+        "fecha": "2025-09-15 16:01:59"
+    },
+    {
+        "evento": "Imagen agregada al collage: flores",
+        "fecha": "2025-09-15 16:02:00"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó persona (personas.jpg)",
+        "timestamp": "2025-09-15T16:02:17.165997"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó animal (animales.jpg)",
+        "timestamp": "2025-09-15T16:02:18.628956"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó flores (flores.jpg)",
+        "timestamp": "2025-09-15T16:02:19.272451"
+    },
+    {
+        "tipo": "collage",
+        "detalle": "Limpiado",
+        "timestamp": "2025-09-15T16:02:22.430994"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó flores (flores.jpg)",
+        "timestamp": "2025-09-15T16:02:23.531545"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó animal (animales.jpg)",
+        "timestamp": "2025-09-15T16:02:24.459747"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó persona (personas.jpg)",
+        "timestamp": "2025-09-15T16:02:25.664922"
+    },
+    {
+        "tipo": "pregunta_resuelta",
+        "detalle": "Correcta: ¿Cuál de estos animales acepto ser amigo del osito",
+        "timestamp": "2025-09-15T16:05:49.776589"
+    },
+    {
+        "tipo": "musica",
+        "detalle": "Reprodujo: 1.mp3",
+        "timestamp": "2025-09-15T16:06:31.821145"
+    },
+    {
+        "tipo": "musica",
+        "detalle": "Reprodujo: 2.mp3",
+        "timestamp": "2025-09-15T16:06:34.932842"
+    },
+    {
+        "tipo": "musica",
+        "detalle": "Reprodujo: 3.mp3",
+        "timestamp": "2025-09-15T16:06:36.810220"
+    },
+    {
+        "tipo": "pregunta_resuelta",
+        "detalle": "Correcta: ¿Que parte del cuerpo le faltaba al osito que no t",
+        "timestamp": "2025-09-15T16:12:45.570333"
+    },
+    {
+        "tipo": "pregunta_resuelta",
+        "detalle": "Correcta: ¿De que color era el osito?",
+        "timestamp": "2025-09-15T16:12:51.122086"
+    },
+    {
+        "tipo": "pregunta_resuelta",
+        "detalle": "Incorrecta: ¿Cuál de estos animales acepto ser amigo del osito (elegido A)",
+        "timestamp": "2025-09-15T16:12:58.293547"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó persona (personas.jpg)",
+        "timestamp": "2025-09-15T16:16:11.970186"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó animal (animales.jpg)",
+        "timestamp": "2025-09-15T16:16:12.836078"
+    },
+    {
+        "tipo": "collage_add_incorrecto",
+        "detalle": "Intentó agregar incorrecto: balon",
+        "timestamp": "2025-09-15T16:16:14.385847"
+    },
+    {
+        "tipo": "collage_add_incorrecto",
+        "detalle": "Intentó agregar incorrecto: objeto",
+        "timestamp": "2025-09-15T16:16:15.691945"
+    },
+    {
+        "tipo": "collage_add_incorrecto",
+        "detalle": "Intentó agregar incorrecto: objeto",
+        "timestamp": "2025-09-15T16:16:16.540572"
+    },
+    {
+        "tipo": "collage_add_incorrecto",
+        "detalle": "Intentó agregar incorrecto: consola",
+        "timestamp": "2025-09-15T16:16:18.158776"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó flores (flores.jpg)",
+        "timestamp": "2025-09-15T16:16:21.198817"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó flores (flores.jpg)",
+        "timestamp": "2025-09-15T16:16:23.393991"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó flores (flores.jpg)",
+        "timestamp": "2025-09-15T16:16:23.956335"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó flores (flores.jpg)",
+        "timestamp": "2025-09-15T16:16:24.253312"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó flores (flores.jpg)",
+        "timestamp": "2025-09-15T16:16:24.483661"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó flores (flores.jpg)",
+        "timestamp": "2025-09-15T16:16:24.693639"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó flores (flores.jpg)",
+        "timestamp": "2025-09-15T16:16:24.890948"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó flores (flores.jpg)",
+        "timestamp": "2025-09-15T16:16:25.108723"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó flores (flores.jpg)",
+        "timestamp": "2025-09-15T16:16:25.348594"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó flores (flores.jpg)",
+        "timestamp": "2025-09-15T16:16:25.592914"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó flores (flores.jpg)",
+        "timestamp": "2025-09-15T16:16:25.806297"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó flores (flores.jpg)",
+        "timestamp": "2025-09-15T16:16:26.078765"
+    },
+    {
+        "tipo": "collage_add",
+        "detalle": "Agregó flores (flores.jpg)",
+        "timestamp": "2025-09-15T16:16:26.345689"
+    }
+]

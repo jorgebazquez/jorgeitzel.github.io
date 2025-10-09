@@ -1,956 +1,311 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VAMOS A JUGAR</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Empresa Emprendimiento</title>
     <style>
+         :root {
+            --accent: #e23636;
+            --accent-2: #2ea0ff;
+            --bg: #0f1724;
+            --card: #0b1220;
+            --glass: rgba(255, 255, 255, 0.03);
+            --muted: #98a0b3
+        }
+        
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            box-sizing: border-box
         }
         
         body {
-            background-color: #a9a9a9;
-            padding: 20px;
+            font-family: Inter, ui-sans-serif, system-ui, Segoe UI, Roboto, 'Helvetica Neue', Arial;
+            background: linear-gradient(180deg, #071026 0%, #091226 60%);
+            color: #e6eef8;
+            margin: 0;
         }
         
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 10px;
-            background-color: #a9a9a9;
+        .container {
+            max-width: 1100px;
+            margin: 36px auto;
+            padding: 28px
         }
         
-        .header h1 {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .menu-btn {
-            padding: 20px;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            height: 120px;
+        header {
             display: flex;
+            align-items: center;
+            gap: 18px
+        }
+        
+        .brand-top {
+            display: flex;
+            align-items: center;
+            gap: 14px
+        }
+        
+        .brand-top img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: var(--glass);
+            padding: 8px
+        }
+        
+        .title {
+            font-size: 20px;
+            font-weight: 700
+        }
+        
+        .subtitle {
+            font-size: 13px;
+            color: var(--muted)
+        }
+        
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 28px;
+            margin-top: 28px;
+            align-items: center
+        }
+        
+        .card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            padding: 28px;
+            border-radius: 16px;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(6px)
+        }
+        
+        .big-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 18px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.00));
+            height: 340px
+        }
+        
+        .big-logo img {
+            max-width: 90%;
+            max-height: 100%;
+            object-fit: contain
+        }
+        
+        .upload-row {
+            display: flex;
+            gap: 12px;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            transition: transform 0.2s;
+            margin-top: 12px
         }
         
-        .menu-btn:hover {
-            transform: scale(1.05);
-        }
-        
-        .top-bar {
+        .vision-mission {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background-color: #a9a9a9;
-            margin-bottom: 20px;
+            flex-direction: column;
+            gap: 12px
         }
         
-        .sub-header {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 15px 0;
+        h2 {
+            margin: 0 0 8px 0
+        }
+        
+        p {
+            margin: 0;
+            color: #cfe6ff
+        }
+        
+        .props {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 18px
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--muted);
+            font-size: 13px
+        }
+        
+        .right {
+            display: flex;
+            flex-direction: column;
+            gap: 14px
+        }
+        
+        .proposals {
+            display: flex;
+            flex-direction: column;
+            gap: 10px
+        }
+        
+        .proposal {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.02));
+            padding: 12px;
+            border-radius: 10px
+        }
+        
+        .logo-idea {
+            font-size: 14px;
+            color: #dfeeff
+        }
+        
+        .socials {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+        
+        .socials a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: inherit;
+            background: rgba(255, 255, 255, 0.02)
+        }
+        
+        .contact {
+            margin-top: 18px;
+            color: var(--muted)
+        }
+        
+        footer {
+            margin-top: 28px;
             text-align: center;
+            color: var(--muted);
+            font-size: 13px
+        }
+        
+        @media (max-width:960px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .big-logo {
+                height: 240px
+            }
+        }
+        
+        input[type=file] {
+            display: none
         }
         
         .btn {
-            padding: 12px 20px;
-            background-color: #4CAF50;
+            background: var(--accent);
             color: white;
-            border: none;
-            border-radius: 4px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 0;
             cursor: pointer;
-            font-size: 16px;
-            margin: 5px;
+            font-weight: 600
         }
         
-        .btn:hover {
-            opacity: 0.9;
+        .btn.secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06)
         }
         
-        .btn-secondary {
-            background-color: #f44336;
-        }
-        
-        .btn-warning {
-            background-color: #ff9800;
-        }
-        
-        .btn-info {
-            background-color: #2196F3;
-        }
-        
-        textarea,
-        input[type="text"],
-        input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-        
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 800px;
-            border-radius: 8px;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .close:hover {
-            color: black;
-        }
-        
-        .question-container {
-            margin: 15px 0;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-        
-        .options-container {
-            margin: 15px 0;
-        }
-        
-        .option {
-            margin: 8px 0;
-        }
-        
-        .collage-container {
-            position: relative;
-            width: 700px;
-            height: 500px;
-            margin: 0 auto;
-            background-color: white;
-            overflow: hidden;
-        }
-        
-        .heart-bg {
-            position: absolute;
-            width: 300px;
-            height: 270px;
-            top: 100px;
-            left: 200px;
-            background-image: url('corazon.png');
-            background-size: cover;
-            background-position: center;
-            z-index: 1;
-        }
-        
-        .collage-item {
-            position: absolute;
-            width: 120px;
-            height: 90px;
-            object-fit: cover;
-            border: 2px solid white;
-            z-index: 10;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-        }
-        
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            animation: fall linear forwards;
-        }
-        
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-            }
-        }
-        
-        .music-player {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 20px 0;
-        }
-        
-        .music-btn {
-            width: 300px;
-            height: 80px;
-            margin: 15px 0;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        
-        .registros-list {
-            max-height: 400px;
-            overflow-y: auto;
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin: 15px 0;
-        }
-        
-        .registro-item {
-            padding: 8px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .x-mark {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(255, 255, 255, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            pointer-events: none;
-        }
-        
-        .x-mark span {
-            font-size: 300px;
-            color: red;
-            font-weight: bold;
-            animation: pulse 1s infinite;
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-        
-        .evaluacion-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .evaluacion-item {
-            margin: 15px 0;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: white;
-        }
-        
-        .heart-title {
-            text-align: center;
-            margin: 15px 0;
-            font-size: 24px;
-            color: #d32f2f;
-            font-weight: bold;
-        }
-        
-        .respeto-title {
-            text-align: center;
-            margin: 20px 0;
-            font-size: 22px;
-            color: #333;
-        }
-        
-        .default-questions-btn {
-            background-color: #9c27b0;
-            margin-top: 10px;
-        }
-        
-        .section {
-            display: none;
-        }
-        
-        .produced-by {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 14px;
-            color: #555;
+        .editable {
+            outline: none;
+            border-radius: 6px;
+            padding: 6px
         }
     </style>
 </head>
 
 <body>
-    <div id="main-menu" class="section">
-        <div class="top-bar">
-            <div class="sub-header">Registro</div>
-            <button class="btn btn-info" onclick="showRegistros()">Ver registros</button>
-        </div>
+    <div class="container">
+        <header>
+            <div class="brand-top">
+                <img id="topLogo" src="logo.png" alt="logo">
+                <div>
+                    <div class="title" contenteditable="true" id="pageTitle">Ejemplo Página</div>
+                    <div class="subtitle">Llos mejores en contenido De Marvel y tu Area de descanso</div>
+                </div>
+            </div>
+        </header>
 
-        <div class="header">
-            <h1>Menú Principal</h1>
-        </div>
+        <main class="hero">
+            <section class="card">
+                <div class="big-logo" id="bigLogoBox">
+                    <img id="bigLogo" src="logo.png" alt="Gran logo">
+                </div>
 
-        <div class="menu-grid">
-            <button class="menu-btn" style="background-color: green; color: white;" onclick="showSection('preguntas-menu')">1. Preguntas</button>
-            <button class="menu-btn" style="background-color: yellow; color: black;" onclick="showSection('musica-section')">2. Música</button>
-            <button class="menu-btn" style="background-color: red; color: white;" onclick="showSection('evaluacion-section')">3. Evaluación</button>
-            <button class="menu-btn" style="background-color: purple; color: white;" onclick="showSection('corazon-section')">4. Corazón ♥️</button>
-        </div>
-        <div class="produced-by">
-            Producido por Mtra. Eustolia itzel Reyes Nava ©
-        </div>
-    </div>
+                <div class="vision-mission">
+                    <div>
+                        <h2>Visión</h2>
+                        <p id="visionText">Ser el punto de encuentro líder para fans y familias que buscan experiencias interactivas inspiradas en el universo Marvel y el mundo de Mario — un lugar donde las máquinas expendedoras, la diversión y los coleccionables se combinan
+                            para crear momentos memorables y fomentar una comunidad creativa y nostálgica.</p>
+                    </div>
 
-    <div id="preguntas-menu" class="section">
-        <div class="top-bar">
-            <button class="btn" onclick="abrirDialogoAgregarPregunta()">Agregar pregunta</button>
-            <button class="btn btn-info" onclick="guardarPreguntas()">Guardar preguntas</button>
-            <button class="btn btn-secondary" onclick="showSection('main-menu')">Volver al menú</button>
-        </div>
+                    <div>
+                        <h2>Misión</h2>
+                        <p id="missionText">Ofrecer una experiencia única de entretenimiento y compra a través de máquinas interactivas (helados, café, juegos de garra y expendedoras de Lego) con temáticas de Marvel y Mario. Buscamos que cada visitante pueda experimentar,
+                            ganar premios tematizados y descubrir productos exclusivos, incentivando la interacción directa con las máquinas y creando eventos temáticos que potencien la comunidad y el crecimiento del negocio.</p>
+                    </div>
 
-        <div class="header">
-            <h2>Preguntas al azar</h2>
-        </div>
+                    <div class="props">
+                        <span class="badge">Inicia con: Máquina de helados · Máquina de café · Ventas de Lego · Máquina de garra</span>
+                        <span class="badge">Orientado a: fans de Marvel y Mario · Familias · Coleccionistas</span>
+                    </div>
+                </div>
+            </section>
 
-        <div style="text-align: center; margin: 20px;">
-            <button class="btn" onclick="jugarTodasPreguntas()">Jugar todas las preguntas</button>
-            <button class="btn default-questions-btn" onclick="restablecerPreguntas()">Restablecer preguntas predeterminadas</button>
-        </div>
-    </div>
+            <aside class="right">
+                <div class="card proposals">
+                    <h2>¿Quienes Somos?</h2>
 
-    <div id="musica-section" class="section">
-        <div class="header">
-            <h2>Reproductor de Música</h2>
-        </div>
+                    <div class="proposal">
+                        <strong>1) PopGarra</strong>
+                        <div class="logo-idea">Slogan: "Gana tus héroes. Vive tus mundos."<br>Idea de logo: Silueta de una garra estilizada que sujeta un bloque clásico de videojuego (pixel) con paleta de colores rojo (Marvel) y rojo/azul/amarillo (Mario).</div>
+                    </div>
 
-        <div class="music-player">
-            <button class="music-btn" onclick="toggleMusic('1.mp3')">1.mp3</button>
-            <button class="music-btn" onclick="toggleMusic('2.mp3')">2.mp3</button>
-            <button class="music-btn" onclick="toggleMusic('3.mp3')">3.mp3</button>
-        </div>
+                    <div class="proposal">
+                        <strong>2) HeroBros Corner</strong>
+                        <div class="logo-idea">Slogan: "Donde héroes y bros se encuentran"<br>Idea de logo: Combinación tipográfica con una ficha tipo bloque de Mario y una estrella estilo cómic detrás.</div>
+                    </div>
 
-        <div style="text-align: center; margin: 20px;">
-            <button class="btn btn-secondary" onclick="stopAudio(); showSection('main-menu');">Regresar</button>
-        </div>
-    </div>
+                    <div class="proposal">
+                        <strong>3) Pixel & Mask</strong>
+                        <div class="logo-idea">Slogan: "Vending, juegos y colecciones"<br>Idea de logo: Ícono mixto: medio casco de superhéroe + bloque pixelado.</div>
+                    </div>
 
-    <div id="evaluacion-section" class="section">
-        <div class="top-bar">
-            <button class="btn btn-info" onclick="verRespuestasEvaluacion()">Ver respuestas</button>
-            <button class="btn btn-secondary" onclick="showSection('main-menu')">Volver al menú</button>
-        </div>
+                    <div class="proposal">
+                        <strong>4) ArcadeLoot</strong>
+                        <div class="logo-idea">Slogan: "Premios que te llevan al juego"<br>Idea de logo: Máquina arcade minimal con premio asomando (figura tipo Lego).</div>
+                    </div>
 
-        <div class="header">
-            <h2>Evaluación</h2>
-        </div>
+                </div>
 
-        <div class="respeto-title">
-            <h3>Mamita/Papito para ti que es el respeto</h3>
-        </div>
+                <div class="card">
+                    <h2>Comunicación & redes</h2>
+                    <div class="socials">
+                        <a href="#">Facebook</a>
+                        <a href="#">X</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">TikTok</a>
+                    </div>
+                </div>
+            </aside>
+        </main>
 
-        <div style="max-width: 800px; margin: 0 auto;">
-            <textarea id="evaluacion-text" rows="10"></textarea>
-            <button class="btn" onclick="guardarEvaluacion()">Guardar</button>
-        </div>
-    </div>
-
-    <div id="corazon-section" class="section">
-        <div class="header">
-            <h2>¿Quiénes merecen respeto?</h2>
-        </div>
-
-        <div class="heart-title">Selecciona imágenes para colocarlas en el corazón</div>
-
-        <div class="collage-container">
-            <div class="heart-bg"></div>
-            <div id="collage-container"></div>
-        </div>
-
-        <div style="text-align: center; margin: 20px;">
-            <button class="btn" onclick="agregarCategoria('animales')">Animales</button>
-            <button class="btn" onclick="agregarCategoria('flores')">Flores</button>
-            <button class="btn" onclick="agregarCategoria('personas')">Personas</button>
-            <button class="btn btn-warning" onclick="agregarCategoria('balon')">Balón</button>
-            <button class="btn btn-warning" onclick="agregarCategoria('objetos')">Objetos</button>
-            <button class="btn btn-warning" onclick="agregarCategoria('consola')">Consola</button>
-        </div>
-
-        <div style="text-align: center; margin: 20px;">
-            <button class="btn" onclick="guardarCollage()">Guardar collage</button>
-            <button class="btn btn-warning" onclick="limpiarCollage()">Limpiar collage</button>
-            <button class="btn btn-secondary" onclick="showSection('main-menu')">Regresar</button>
-        </div>
-    </div>
-
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="modal-content"></div>
-        </div>
+        <footer>
+            <div>© <span id="yyyy"></span> MundoGeek • Diseño de landing temático</div>
+        </footer>
     </div>
 
     <script>
-        // Almacenamiento de datos
-        const ALFABETO_KEY = 'alfabeto';
-        const SIMON_KEY = 'simon_dice';
-        const PREGUNTAS_KEY = 'preguntas';
-        const EVALUACION_KEY = 'evaluacion_respuestas';
-        const REGISTROS_KEY = 'registros';
-
-        // Datos de la aplicación
-        let alfabeto = {};
-        let simonFrases = [];
-        let preguntas = [];
-        let evaluacionRespuestas = [];
-        let registros = [];
-
-        // Estado de la aplicación
-        let currentTrack = null;
-        let trackPaused = false;
-        let collageItems = [];
-        let audioPlayers = {};
-        let uploadedImage = null;
-
-        // Preguntas predefinidas
-        const defaultQuestions = [{
-            question: "¿Cuál de estos animales acepto ser amigo del osito?",
-            options: {
-                A: "Gato",
-                B: "Perro",
-                C: "Pajarito"
-            },
-            answer: "B",
-            image: "gato.jpg"
-        }, {
-            question: "¿Que parte del cuerpo le faltaba al osito que no tenía amigos?",
-            options: {
-                A: "Ojo",
-                B: "Pie",
-                C: "Mano"
-            },
-            answer: "C",
-            image: "manos.jpg"
-        }, {
-            question: "¿De que color era el osito?",
-            options: {
-                A: "Blanco con negro",
-                B: "Negro",
-                C: "Café"
-            },
-            answer: "A",
-            image: "osos.jpg"
-        }];
-
-        // Inicialización
-        document.addEventListener('DOMContentLoaded', function() {
-            loadData();
-            showSection('main-menu');
-        });
-
-        // Cargar datos desde localStorage
-        function loadData() {
-            alfabeto = JSON.parse(localStorage.getItem(ALFABETO_KEY)) ||
-                Object.fromEntries(Array.from({
-                    length: 26
-                }, (_, i) => [String.fromCharCode(65 + i), '']));
-
-            simonFrases = JSON.parse(localStorage.getItem(SIMON_KEY)) || [
-                "Simón dice todos sentados",
-                "Simón dice todos de pie",
-                "Simón dice todos consigan un plumón",
-                "Simón dice levanten la mano derecha",
-                "Simón dice toquen su cabeza",
-            ];
-
-            // Cargar preguntas o usar las predeterminadas
-            const storedPreguntas = localStorage.getItem(PREGUNTAS_KEY);
-            if (storedPreguntas) {
-                preguntas = JSON.parse(storedPreguntas);
-            } else {
-                preguntas = [...defaultQuestions];
-                saveData(PREGUNTAS_KEY, preguntas);
-            }
-
-            evaluacionRespuestas = JSON.parse(localStorage.getItem(EVALUACION_KEY)) || [];
-            registros = JSON.parse(localStorage.getItem(REGISTROS_KEY)) || [];
-        }
-
-        // Guardar datos en localStorage
-        function saveData(key, data) {
-            localStorage.setItem(key, JSON.stringify(data));
-        }
-
-        // Añadir registro
-        function addRegistro(tipo, detalle) {
-            const entry = {
-                tipo: tipo,
-                detalle: detalle,
-                timestamp: new Date().toISOString()
-            };
-            registros.push(entry);
-            saveData(REGISTROS_KEY, registros);
-        }
-
-        // Navegación entre secciones
-        function showSection(sectionId) {
-            // Ocultar todas las secciones
-            document.querySelectorAll('.section').forEach(section => {
-                section.style.display = 'none';
-            });
-
-            // Mostrar la sección solicitada
-            document.getElementById(sectionId).style.display = 'block';
-
-            // Detener audio si estamos saliendo de la sección de música
-            if (sectionId !== 'musica-section') {
-                stopAudio();
-            }
-        }
-
-        function showModal(content) {
-            document.getElementById('modal-content').innerHTML = content;
-            document.getElementById('modal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-
-        // Preguntas
-        function restablecerPreguntas() {
-            if (confirm("¿Estás seguro de que quieres restablecer las preguntas predeterminadas? Se perderán las preguntas que hayas agregado.")) {
-                preguntas = [...defaultQuestions];
-                saveData(PREGUNTAS_KEY, preguntas);
-                addRegistro('preguntas', 'Preguntas restablecidas a valores predeterminados');
-                alert('Preguntas restablecidas correctamente');
-            }
-        }
-
-        function abrirDialogoAgregarPregunta() {
-            const content = `
-                <h2>Agregar pregunta</h2>
-                <div>
-                    <label>Pregunta:</label>
-                    <textarea id="pregunta-text" rows="4"></textarea>
-                    
-                    <label>Opción A:</label>
-                    <input type="text" id="opt-a">
-                    
-                    <label>Opción B:</label>
-                    <input type="text" id="opt-b">
-                    
-                    <label>Opción C:</label>
-                    <input type="text" id="opt-c">
-                    
-                    <label>Respuesta correcta (A/B/C):</label>
-                    <input type="text" id="correct-answer">
-                    
-                    <label>Imagen (nombre de archivo):</label>
-                    <input type="text" id="pregunta-image">
-                    
-                    <div style="margin-top: 20px;">
-                        <button class="btn" onclick="guardarPregunta()">Guardar</button>
-                        <button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
-                    </div>
-                </div>
-            `;
-
-            showModal(content);
-        }
-
-        function guardarPregunta() {
-            const pregunta = document.getElementById('pregunta-text').value;
-            const optA = document.getElementById('opt-a').value;
-            const optB = document.getElementById('opt-b').value;
-            const optC = document.getElementById('opt-c').value;
-            const answer = document.getElementById('correct-answer').value.toUpperCase();
-            const image = document.getElementById('pregunta-image').value;
-
-            if (!pregunta || !answer.match(/^[ABC]$/)) {
-                alert('Completa la pregunta y especifica una respuesta válida (A, B o C)');
-                return;
-            }
-
-            const entry = {
-                question: pregunta,
-                options: {
-                    A: optA,
-                    B: optB,
-                    C: optC
-                },
-                answer: answer
-            };
-
-            if (image) {
-                entry.image = image;
-            }
-
-            preguntas.push(entry);
-            saveData(PREGUNTAS_KEY, preguntas);
-            addRegistro('pregunta_agregada', `Pregunta agregada: ${pregunta.substring(0, 50)}`);
-            closeModal();
-            alert('Pregunta guardada correctamente');
-        }
-
-        function guardarPreguntas() {
-            saveData(PREGUNTAS_KEY, preguntas);
-            alert('Preguntas guardadas');
-        }
-
-        function jugarTodasPreguntas() {
-            if (preguntas.length === 0) {
-                alert('No hay preguntas para jugar');
-                return;
-            }
-
-            const shuffled = [...preguntas].sort(() => Math.random() - 0.5);
-            mostrarPregunta(shuffled, 0, 0);
-        }
-
-        function mostrarPregunta(lista, idx, score) {
-            if (idx >= lista.length) {
-                alert(`¡Has terminado todas las preguntas! Tuviste ${score} de ${lista.length} correctas.`);
-                showSection('preguntas-menu');
-                return;
-            }
-
-            const q = lista[idx];
-            let content = `
-                <h2>Pregunta ${idx + 1} de ${lista.length}</h2>
-                <div class="question-container">
-                    <p>${q.question}</p>
-            `;
-
-            if (q.image) {
-                content += `<img src="${q.image}" style="max-width: 100%; max-height: 250px; margin: 10px 0;">`;
-            }
-
-            content += `
-                </div>
-                <div class="options-container">
-                    <div class="option">
-                        <input type="radio" name="answer" id="opt-a" value="A">
-                        <label for="opt-a">A. ${q.options.A}</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="answer" id="opt-b" value="B">
-                        <label for="opt-b">B. ${q.options.B}</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="answer" id="opt-c" value="C">
-                        <label for="opt-c">C. ${q.options.C}</label>
-                    </div>
-                </div>
-                <button class="btn" onclick="verificarRespuesta('${q.answer}', ${idx}, ${score}, ${JSON.stringify(lista).replace(/"/g, '&quot;')})">Verificar</button>
-            `;
-
-            showModal(content);
-        }
-
-        function verificarRespuesta(respuestaCorrecta, idx, score, lista) {
-            const selected = document.querySelector('input[name="answer"]:checked');
-            if (!selected) {
-                alert('Selecciona una respuesta');
-                return;
-            }
-
-            if (selected.value === respuestaCorrecta) {
-                score++;
-                addRegistro('pregunta_resuelta', `Correcta: ${lista[idx].question.substring(0, 50)}`);
-                animarConfeti(function() {
-                    closeModal();
-                    mostrarPregunta(lista, idx + 1, score);
-                });
-            } else {
-                addRegistro('pregunta_resuelta', `Incorrecta: ${lista[idx].question.substring(0, 50)} (elegido ${selected.value})`);
-                closeModal();
-                mostrarPregunta(lista, idx + 1, score);
-            }
-        }
-
-        // Música
-        function toggleMusic(track) {
-            if (currentTrack === track) {
-                if (!trackPaused) {
-                    if (audioPlayers[track]) {
-                        audioPlayers[track].pause();
-                        trackPaused = true;
-                    }
-                } else {
-                    if (audioPlayers[track]) {
-                        audioPlayers[track].play();
-                        trackPaused = false;
-                    }
-                }
-                return;
-            }
-
-            stopAudio();
-
-            if (!audioPlayers[track]) {
-                audioPlayers[track] = new Audio(track);
-                audioPlayers[track].addEventListener('error', function() {
-                    alert(`No se pudo cargar el archivo: ${track}`);
-                });
-            }
-
-            audioPlayers[track].play();
-            currentTrack = track;
-            trackPaused = false;
-            addRegistro('musica', `Reprodujo: ${track}`);
-        }
-
-        function stopAudio() {
-            for (const track in audioPlayers) {
-                audioPlayers[track].pause();
-                audioPlayers[track].currentTime = 0;
-            }
-            currentTrack = null;
-            trackPaused = false;
-        }
-
-        // Evaluación
-        function guardarEvaluacion() {
-            const texto = document.getElementById('evaluacion-text').value.trim();
-            if (!texto) {
-                alert('Escribe algo');
-                return;
-            }
-
-            const entry = {
-                respuesta: texto,
-                timestamp: new Date().toISOString()
-            };
-
-            evaluacionRespuestas.push(entry);
-            saveData(EVALUACION_KEY, evaluacionRespuestas);
-            addRegistro('evaluacion', `Respuesta guardada: ${texto.substring(0, 50)}`);
-            document.getElementById('evaluacion-text').value = '';
-            alert('Respuesta guardada');
-        }
-
-        function verRespuestasEvaluacion() {
-            let content = '<h2>Respuestas de evaluación</h2><div class="registros-list">';
-
-            if (evaluacionRespuestas.length === 0) {
-                content += '<p>No hay respuestas guardadas</p>';
-            } else {
-                evaluacionRespuestas.forEach(respuesta => {
-                    const fecha = new Date(respuesta.timestamp).toLocaleString();
-                    content += `
-                        <div class="registro-item">
-                            <strong>[${fecha}]</strong> ${respuesta.respuesta}
-                        </div>
-                    `;
-                });
-            }
-
-            content += '</div><button class="btn" onclick="closeModal()">Cerrar</button>';
-            showModal(content);
-        }
-
-        // Corazón / Collage
-        const mapping = {
-            'animales': 'animales.jpg',
-            'flores': 'flores.jpg',
-            'personas': 'personas.jpg'
-        };
-
-        const incorrectos = {
-            'balon': 'balon.jpeg',
-            'objetos': 'objetos.jpg',
-            'consola': 'consola.png'
-        };
-
-        function agregarCategoria(cat) {
-            const container = document.getElementById('collage-container');
-
-            if (mapping[cat]) {
-                const img = document.createElement('img');
-                img.src = mapping[cat];
-                img.className = 'collage-item';
-
-                // Posiciones dentro del corazón
-                const positions = [{
-                    left: '280px',
-                    top: '180px'
-                }, {
-                    left: '350px',
-                    top: '150px'
-                }, {
-                    left: '230px',
-                    top: '150px'
-                }, {
-                    left: '200px',
-                    top: '230px'
-                }, {
-                    left: '380px',
-                    top: '230px'
-                }, {
-                    left: '290px',
-                    top: '280px'
-                }];
-
-                const pos = positions[collageItems.length % positions.length];
-                img.style.left = pos.left;
-                img.style.top = pos.top;
-
-                container.appendChild(img);
-                collageItems.push({
-                    tipo: cat,
-                    path: mapping[cat]
-                });
-
-                addRegistro('collage_add', `Agregó ${cat} (${mapping[cat]})`);
-                animarConfeti();
-            } else if (incorrectos[cat]) {
-                mostrarTache();
-                addRegistro('collage_add_incorrecto', `Intentó agregar incorrecto: ${cat}`);
-            } else {
-                alert(`La categoría '${cat}' no está definida`);
-            }
-        }
-
-        function mostrarTache() {
-            const xMark = document.createElement('div');
-            xMark.className = 'x-mark';
-            xMark.innerHTML = '<span>✖</span>';
-
-            document.body.appendChild(xMark);
-
-            setTimeout(() => {
-                if (xMark.parentNode) document.body.removeChild(xMark);
-            }, 1500);
-        }
-
-        function limpiarCollage() {
-            const container = document.getElementById('collage-container');
-            const items = container.querySelectorAll('.collage-item');
-            items.forEach(item => container.removeChild(item));
-            collageItems = [];
-            addRegistro('collage', 'Limpiado');
-        }
-
-        function guardarCollage() {
-            if (collageItems.length === 0) {
-                alert('No hay elementos para guardar');
-                return;
-            }
-
-            // En una implementación real, aquí se usaría una librería como html2canvas
-            // para capturar el contenido del collage y guardarlo como imagen
-            alert('Funcionalidad de guardar collage simulada. En una implementación real, se guardaría una imagen.');
-            addRegistro('collage_guardado', 'Guardó collage (simulado)');
-        }
-
-        // Registros
-        function showRegistros() {
-            let content = '<h2>Registros de actividad</h2><div class="registros-list">';
-
-            if (registros.length === 0) {
-                content += '<p>No hay registros</p>';
-            } else {
-                registros.forEach(registro => {
-                    const fecha = new Date(registro.timestamp).toLocaleString();
-                    content += `
-                        <div class="registro-item">
-                            <strong>[${fecha}] ${registro.tipo}:</strong> ${registro.detalle}
-                        </div>
-                    `;
-                });
-            }
-
-            content += '</div>';
-            content += '<button class="btn" onclick="exportRegistros()">Exportar a TXT</button>';
-            content += '<button class="btn btn-secondary" onclick="closeModal()">Cerrar</button>';
-
-            showModal(content);
-        }
-
-        function exportRegistros() {
-            let content = '';
-            registros.forEach(registro => {
-                content += `[${registro.timestamp}] ${registro.tipo}: ${registro.detalle}\n`;
-            });
-
-            const blob = new Blob([content], {
-                type: 'text/plain'
-            });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'registros.txt';
-            a.click();
-
-            addRegistro('registros_export', 'Exportó registros a: registros.txt');
-            alert('Registros exportados');
-        }
-
-        // Animación de confeti
-        function animarConfeti(onComplete) {
-            const colors = ["#ff4b5c", "#4bcffa", "#ffd166", "#06d6a0", "#8338ec", "#ff8fab", "#f94144", "#f9844a"];
-            const container = document.querySelector('body');
-
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.width = (Math.random() * 6 + 6) + 'px';
-                confetti.style.height = confetti.style.width;
-                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
-
-                container.appendChild(confetti);
-
-                setTimeout(() => {
-                    if (confetti.parentNode) container.removeChild(confetti);
-                }, 5000);
-            }
-
-            if (onComplete) {
-                setTimeout(onComplete, 3000);
-            }
-        }
+        document.getElementById('yyyy').textContent = new Date().getFullYear();
     </script>
 </body>
-
 
 </html>

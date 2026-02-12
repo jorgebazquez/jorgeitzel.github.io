@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jorge e Itzel</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fff5f7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            transition: background-color 1s ease;
+        }
+        /* Flores en las esquinas */
+        
+        .corner-flower {
+            position: absolute;
+            width: 180px;
+            opacity: 0.9;
+            z-index: 10;
+            pointer-events: none;
+        }
+        
+        .top-left { top: -30px; left: -30px; }
+        .top-right { top: -30px; right: -30px; transform: scaleX(-1); }
+        .bottom-left { bottom: -30px; left: -30px; transform: scaleY(-1); }
+        .bottom-right { bottom: -30px; right: -30px; transform: rotate(180deg); }
+
+        /* Tarjeta Principal */
+        .card {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 5;
+            border: 2px solid #ffb7c5;
+            max-width: 400px;
+            transition: opacity 0.8s ease;
+        }
+        
+        h1 { color: #d63384; font-size: 2.5rem; margin-bottom: 10px; }
+        p { color: #555; font-size: 1.2rem; margin-bottom: 30px; }
+        
+        .main-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 5px solid #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-start, .btn-choice, .btn-collage {
+            background-color: #ff6b81;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-start:hover, .btn-choice:hover, .btn-collage:hover {
+            transform: scale(1.05);
+            background-color: #ff4757;
+        }
+        
+        .btn-no { background-color: #a1a1a1; position: relative; }
+
+        /* Secciones del Libro */
+        #book-page {
+            display: none;
+            position: fixed;
+            width: 85%;
+            max-width: 600px;
+            min-height: 400px;
+            background: #fdfaf1;
+            border: 1px solid #e0d5b1;
+            box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            text-align: center;
+            border-radius: 5px 20px 20px 5px;
+            background-image: linear-gradient(90deg, rgba(200, 0, 0, 0.1) 1px, transparent 1px), linear-gradient(#d1e5f0 1px, transparent 1px);
+            background-size: 40px 40px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 20;
+            animation: openBook 1.2s forwards;
+        }
+        
+        .story-text {
+            font-family: 'Georgia', serif;
+            color: #4a4a4a;
+            font-style: italic;
+            line-height: 1.8;
+            font-size: 1.8rem;
+        }
+        
+        #final-page {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            max-width: 500px;
+            min-height: 500px;
+            background: white;
+            background-image: repeating-linear-gradient(white 0px, white 24px, #7ec4e0 25px);
+            padding: 50px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 40px solid #f1f1f1;
+            position: relative;
+            z-index: 30;
+        }
+        
+        .handwritten {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Collage de Corazón */
+        #collage-section {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 40;
+            width: 100%;
+            padding: 20px;
+        }
+        
+        .heart-container {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            width: 350px;
+            padding: 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .photo-slot { width: 100%; aspect-ratio: 1 / 1; border-radius: 4px; overflow: hidden; background-color: #f0f0f0; }
+        .photo-slot img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .empty { visibility: hidden; }
+        
+        .download-msg {
+            margin-top: 20px;
+            font-family: 'Segoe UI', sans-serif;
+            color: #d63384;
+            font-weight: bold;
+            display: none;
+        }
+        
+        @keyframes openBook {
+            from { transform: perspective(1000px) rotateY(-90deg); opacity: 0; }
+            to { transform: perspective(1000px) rotateY(0deg); opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="https://cdn-icons-png.flaticon.com/512/346/346167.png" class="corner-flower top-left">
+    <img src="https://cdn-icons-png.flaticon.com/512/346/346167.png" class="corner-flower top-right">
+    <img src="https://cdn-icons-png.flaticon.com/512/346/346167.png" class="corner-flower bottom-left">
+    <img src="https://cdn-icons-png.flaticon.com/512/346/346167.png" class="corner-flower bottom-right">
+
+    <div class="card" id="main-card">
+        <h1>Hola Amor</h1>
+        <img src="Photos-3-001 (1)/IMG-20240727-WA0173.jpg" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=500'" alt="Nuestra Foto" class="main-image">
+        <p>Eres lo mejor que me pasó en la vida</p>
+        <button class="btn-start" onclick="iniciarHistoria()">Comenzar</button>
+    </div>
+
+    <div id="book-page">
+        <div class="story-text">
+            "Aquí comienza nuestra historia... <br> ¿Aceptas escribirla junto a mí?"
+        </div>
+        <div style="margin-top: 30px;">
+            <button class="btn-choice" onclick="mostrarFinal()">SÍ</button>
+            <button class="btn-choice btn-no" id="btn-no" onmouseover="moverBoton()">NO</button>
+        </div>
+    </div>
+
+    <div id="final-page">
+        <div class="handwritten">
+            Será un gusto escribir mi historia contigo ❤️ <br>🥰 Jorge e Itzel 🥰
+        </div>
+        <button class="btn-collage" onclick="mostrarCollage()">Ver Nuestra Galería 💖</button>
+    </div>
+
+    <div id="collage-section">
+        <h2 style="color:#d63384; font-family:'Brush Script MT', cursive; font-size:3rem; margin-bottom:10px; text-align:center;">Nuestros Momentos</h2>
+        <div class="heart-container" id="heart-grid" onclick="descargarCorazon()"></div>
+        <div class="download-msg" id="download-msg">¡Descargando nuestro recuerdo! ❤️</div>
+    </div>
+
+    <script>
+        function iniciarHistoria() {
+            const card = document.getElementById('main-card');
+            card.style.opacity = '0';
+            setTimeout(() => {
+                card.style.display = 'none';
+                const book = document.getElementById('book-page');
+                book.style.display = 'flex';
+                document.body.style.backgroundColor = "#e8d8c3";
+            }, 800);
+        }
+
+        function mostrarFinal() {
+            const book = document.getElementById('book-page');
+            book.style.display = 'none';
+            const final = document.getElementById('final-page');
+            final.style.display = 'flex';
+            document.body.style.backgroundColor = "#d1e5f0";
+        }
+
+        function moverBoton() {
+            const btnNo = document.getElementById('btn-no');
+            const x = Math.random() * (window.innerWidth - btnNo.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btnNo.offsetHeight);
+            btnNo.style.position = "absolute";
+            btnNo.style.left = x + "px";
+            btnNo.style.top = y + "px";
+        }
+
+        function mostrarCollage() {
+            document.getElementById('final-page').style.display = 'none';
+            document.getElementById('collage-section').style.display = 'flex';
+            document.body.style.backgroundColor = "#ffe6ea";
+            generarCorazon();
+        }
+
+        function generarCorazon() {
+            const container = document.getElementById('heart-grid');
+            container.innerHTML = '';
+
+            const map = [
+                0, 1, 1, 0, 1, 1, 0,
+                1, 1, 1, 1, 1, 1, 1,
+                1, 1, 1, 1, 1, 1, 1,
+                0, 1, 1, 1, 1, 1, 0,
+                0, 0, 1, 1, 1, 0, 0,
+                0, 0, 0, 1, 0, 0, 0
+            ];
+
+            // Nombres de archivos extraídos de tu imagen
+            const misFotos = [
+                "IMG-20220912-WA0172.jpg", "IMG-20231025-WA0152.jpg", "IMG-20231118-WA0046.jpeg",
+                "IMG-20231118-WA0052.jpg", "IMG-20231118-WA0137.jpg", "IMG-20231120-WA0230.jpg",
+                "IMG-20231120-WA0239.jpg", "IMG-20231120-WA0240.jpg", "IMG-20240129-WA0061.jpg",
+                "IMG-20240420-WA0217.jpg", "IMG-20240727-WA0084.jpeg", "IMG-20240727-WA0124.jpg",
+                "IMG-20240727-WA0173.jpg", "IMG-20241123-WA0149.jpg", "IMG-20250114-WA0113.jpg",
+                "IMG-20250329-WA0089.jpg", "IMG-20250329-WA0091.jpg", "IMG-20250329-WA0092.jpg",
+                "IMG-20250407-WA0128.jpg", "IMG-20250503-WA0109.jpeg", "IMG-20250503-WA0142.jpeg"
+            ];
+
+            let photoCount = 0;
+            map.forEach(val => {
+                const div = document.createElement('div');
+                div.className = val === 1 ? 'photo-slot' : 'photo-slot empty';
+
+                if (val === 1) {
+                    const img = document.createElement('img');
+                    const fotoIndex = photoCount % misFotos.length;
+                    // Ruta relativa a la carpeta de la imagen
+                    img.src = `Photos-3-001 (1)/${misFotos[fotoIndex]}`;
+                    img.onerror = function() { this.src = 'https://images.unsplash.com/photo-1516961642265-531546e84af2?q=80&w=200'; };
+                    div.appendChild(img);
+                    photoCount++;
+                }
+                container.appendChild(div);
+            });
+        }
+
+        function descargarCorazon() {
+            const element = document.getElementById('heart-grid');
+            const msg = document.getElementById('download-msg');
+            msg.style.display = 'block';
+
+            html2canvas(element, { backgroundColor: null, scale: 2, useCORS: true }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'nuestro_corazon_jorge_e_itzel.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                setTimeout(() => msg.style.display = 'none', 3000);
+            });
+        }
+    </script>
+</body>
+</html>
